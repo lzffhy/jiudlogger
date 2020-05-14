@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "jiudlogger",
+      "type": "com.jiud.JiudLoggerProperties",
+      "sourceType": "com.jiud.JiudLoggerProperties"
+    }
+  ],
+  "properties": [
+    {
+      "name": "jiudlogger.describe",
+      "type": "java.lang.String",
+      "sourceType": "com.jiud.JiudLoggerProperties"
+    },
+    {
+      "name": "jiudlogger.type",
+      "type": "java.lang.String",
+      "sourceType": "com.jiud.JiudLoggerProperties"
+    }
+  ],
+  "hints": []
+}
