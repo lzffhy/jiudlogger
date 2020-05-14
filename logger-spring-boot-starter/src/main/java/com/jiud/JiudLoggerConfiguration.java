@@ -1,5 +1,7 @@
 package com.jiud;
 
+import com.jiud.aop.LogAspect;
+import com.jiud.aop.SysLogAspect;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -22,4 +24,12 @@ public class JiudLoggerConfiguration {
     public Jiudlogger jiudlogger() {
         return new Jiudlogger(jiudLoggerProperties.getType(),jiudLoggerProperties.getDescribe());
     }
+
+    @Bean
+    public SysLogAspect sysLogAspect() {
+        return new SysLogAspect();
+    }
+
+    @Bean
+    public LogAspect logAspect() {return new LogAspect();}
 }
