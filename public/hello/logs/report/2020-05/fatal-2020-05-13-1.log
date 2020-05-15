@@ -1,0 +1,20 @@
+2020.05.13 13:27:39+ INFO+**************************** Start ****************************
+2020.05.13 13:27:39+ INFO+URL            : http://localhost:8081/hello
+2020.05.13 13:27:39+ INFO+Description    : 这是hello
+2020.05.13 13:27:39+ INFO+Http Method    : GET
+2020.05.13 13:27:39+ INFO+Class Method   : com.lzffhy.hello.HelloController hello
+2020.05.13 13:27:39+ INFO+IP             : 0:0:0:0:0:0:0:1
+2020.05.13 13:27:39+ INFO+Request Args   : []
+2020.05.13 13:27:39+ INFO+info
+2020.05.13 13:27:39+ INFO+com.lzffhy.hello.HelloController.hello
+2020.05.13 13:27:39+ INFO+[]
+2020.05.13 13:27:39+ INFO+"yangjiajunhello yang"
+2020.05.13 13:27:39+ INFO+1589347659588
+2020.05.13 13:27:39+ INFO+http://localhost:8081/hello
+2020.05.13 13:27:39+ INFO+0:0:0:0:0:0:0:1
+2020.05.13 13:27:39+ INFO+Wed May 13 13:27:39 CST 2020
+2020.05.13 13:27:39+ INFO+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36
+2020.05.13 13:27:39+ INFO+Response Args  : "yangjiajunhello yang"
+2020.05.13 13:27:39+ INFO+Time-Consuming : ms 11
+2020.05.13 13:27:39+ INFO+**************************** End ****************************
+

@@ -47,6 +47,10 @@
                     <artifactId>spring-boot-starter-logging</artifactId>
 
                 </exclusion>
+                <exclusion>
+                    <artifactId>logback-core</artifactId>
+                    <groupId>ch.qos.logback</groupId>
+                </exclusion>
             </exclusions>
         </dependency>
 

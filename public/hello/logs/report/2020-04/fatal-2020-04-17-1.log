@@ -1,0 +1,35 @@
+2020.04.17 13:25:56+ INFO+Starting HelloApplication on DESKTOP-FK2R1J4 with PID 4040 (D:\yangjiajun\jiuding_workspace\jiudlogger\public\hello\target\classes started by Administrator in D:\yangjiajun\jiuding_workspace\jiudlogger\public\hello)
+2020.04.17 13:25:56+ INFO+No active profile set, falling back to default profiles: default
+2020.04.17 13:25:58+ INFO+Tomcat initialized with port(s): 8081 (http)
+2020.04.17 13:25:58+ INFO+Initializing ProtocolHandler ["http-nio-8081"]
+2020.04.17 13:25:58+ INFO+Starting service [Tomcat]
+2020.04.17 13:25:58+ INFO+Starting Servlet engine: [Apache Tomcat/9.0.34]
+2020.04.17 13:25:58+ INFO+Initializing Spring embedded WebApplicationContext
+2020.04.17 13:25:58+ INFO+Root WebApplicationContext: initialization completed in 1225 ms
+2020.04.17 13:25:58+ INFO+Initializing ExecutorService 'applicationTaskExecutor'
+2020.04.17 13:25:58+ INFO+Starting ProtocolHandler ["http-nio-8081"]
+2020.04.17 13:25:58+ INFO+Tomcat started on port(s): 8081 (http) with context path ''
+2020.04.17 13:25:58+ INFO+Started HelloApplication in 2.952 seconds (JVM running for 5.25)
+2020.04.17 13:26:04+ INFO+Initializing Spring DispatcherServlet 'dispatcherServlet'
+2020.04.17 13:26:04+ INFO+Initializing Servlet 'dispatcherServlet'
+2020.04.17 13:26:04+ INFO+Completed initialization in 12 ms
+2020.04.17 13:26:04+ INFO+**************************** Start ****************************
+2020.04.17 13:26:04+ INFO+URL            : http://localhost:8081/hello
+2020.04.17 13:26:04+ INFO+Description    : 这是hello
+2020.04.17 13:26:04+ INFO+Http Method    : GET
+2020.04.17 13:26:04+ INFO+Class Method   : com.lzffhy.hello.HelloController hello
+2020.04.17 13:26:04+ INFO+IP             : 0:0:0:0:0:0:0:1
+2020.04.17 13:26:04+ INFO+Request Args   : []
+2020.04.17 13:26:04+ INFO+info
+2020.04.17 13:26:04+ INFO+com.lzffhy.hello.HelloController.hello
+2020.04.17 13:26:04+ INFO+[]
+2020.04.17 13:26:04+ INFO+"yangjiajunhello yang"
+2020.04.17 13:26:04+ INFO+1587101164287
+2020.04.17 13:26:04+ INFO+http://localhost:8081/hello
+2020.04.17 13:26:04+ INFO+0:0:0:0:0:0:0:1
+2020.04.17 13:26:04+ INFO+Fri Apr 17 13:26:04 CST 2020
+2020.04.17 13:26:04+ INFO+Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36
+2020.04.17 13:26:04+ INFO+Response Args  : "yangjiajunhello yang"
+2020.04.17 13:26:04+ INFO+Time-Consuming : ms 62
+2020.04.17 13:26:04+ INFO+**************************** End ****************************
+

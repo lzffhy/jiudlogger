@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5d352d03-158b-49e7-a148-b61d8a52103e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/src/main/resources/bak/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/src/main/resources/logback-spring.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/test/TestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../logger-spring-boot-starter/src/main/java/com/jiud/aop/SysLogAspect.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/src/main/java/com/jiud/aop/SysLogAspect.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/classes/com/jiud/aop/SysLogAspect.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/classes/com/jiud/aop/SysLogAspect.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/logger-spring-boot-starter-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/logger-spring-boot-starter-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/maven-archiver/pom.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/maven-archiver/pom.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/../../logger-spring-boot-starter/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../hello/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../hello/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../hello/src/main/resources/log4j2.xml" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$PROJECT_DIR$/../../../../apache-maven-3.5.4" />
+        <option name="userSettingsFile" value="D:\yangjiajun\apache-maven-3.5.4\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1bvU5sZBV7LGO6kLD9d0UvW6Rb7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RequestMappingsPanelOrder0" value="0" />
+    <property name="RequestMappingsPanelOrder1" value="1" />
+    <property name="RequestMappingsPanelWidth0" value="75" />
+    <property name="RequestMappingsPanelWidth1" value="75" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RunManager">
+    <configuration name="TestApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="test" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.test.TestApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5d352d03-158b-49e7-a148-b61d8a52103e" name="Default Changelist" comment="" />
+      <created>1589511880509</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1589511880509</updated>
+      <workItem from="1589511887198" duration="944000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1589511936014">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1589511936014" />
+    <state width="1860" height="281" key="GridCell.Tab.0.bottom" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.0.center" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.0.left" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.0.right" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.1.bottom" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.1.center" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.1.left" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state width="1860" height="281" key="GridCell.Tab.1.right" timestamp="1589513122852">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1860" height="281" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1589513122852" />
+    <state x="461" y="164" key="SettingsEditor" timestamp="1589511938881">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="461" y="164" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1589511938881" />
+  </component>
+</project>

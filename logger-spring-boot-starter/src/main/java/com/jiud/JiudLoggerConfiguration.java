@@ -2,6 +2,7 @@ package com.jiud;
 
 import com.jiud.aop.LogAspect;
 import com.jiud.aop.SysLogAspect;
+import com.jiud.listener.ApplicationStartedEventListener;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
@@ -32,4 +33,9 @@ public class JiudLoggerConfiguration {
 
     @Bean
     public LogAspect logAspect() {return new LogAspect();}
+
+//    @Bean
+//    public ApplicationStartedEventListener applicationStartedEventListener() {
+//        return new ApplicationStartedEventListener();
+//    }
 }

@@ -15,6 +15,8 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Date;
 
 @Aspect
@@ -46,7 +48,7 @@ public class SysLogAspect {
                 logger.info(JSON.toJSONString(result));
                 logger.info(String.valueOf(System.currentTimeMillis()));
                 logger.info(request.getRequestURL().toString());
-                logger.info(request.getRemoteAddr());
+                logger.info(getClientRealIp(request));
                 logger.info(new Date().toString());
                 logger.info(request.getHeader("User-Agent"));
             } catch (Exception ex) {
@@ -61,7 +63,7 @@ public class SysLogAspect {
 
     @Before("webLog()")
     public void doBefore(JoinPoint joinPoint) throws Throwable{
-        logger.info("===========================================================");
+        //logger.info("===========================================================");
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
         String methodDesription = getAspectLogDescription(joinPoint);
@@ -76,9 +78,58 @@ public class SysLogAspect {
         // 打印调用Controller的全路径以及执行方法
         logger.info("Class Method   : " + joinPoint.getSignature().getDeclaringTypeName()+" "+joinPoint.getSignature().getName());
         // 打印请求的IP
-        logger.info("IP             : " + request.getRemoteAddr());
+        //logger.info("IP             : " + request.getRemoteAddr());
+        logger.info("IP             : " + getClientRealIp(request));
         // 打印请求入参
         logger.info("Request Args   : " + JSON.toJSONString(joinPoint.getArgs()));
+    }
+
+    public static String getClientRealIp(HttpServletRequest request) {
+        String realIp = null;
+        realIp = request.getHeader("X-Forwarded-For");
+        if (!checkRealIp(realIp)) {
+            realIp = request.getHeader("Proxy-Client-Ip");
+            if (!checkRealIp(realIp)) {
+                realIp = request.getHeader("WL-Proxy-Client-Ip");
+                if (!checkRealIp(realIp)) {
+                    realIp = request.getRemoteAddr();
+                    if (realIp.equals("127.0.0.1") || realIp.endsWith("0:0:0:0:0:0:1")) {
+                        try {
+                            realIp = InetAddress.getLocalHost().getHostAddress();
+                        } catch (UnknownHostException e) {
+                        }
+                    }
+                }
+            }
+        }
+        if (realIp != null && realIp.length() > 15) {
+            if (realIp.indexOf(",") > 0) {
+                realIp = realIp.substring(0,realIp.indexOf(","));
+            }
+        }
+        return realIp;
+    }
+
+    /**
+     * 获取本机ip
+     * @return
+     * @throws Exception
+     */
+    public static String getLocalHostIp() {
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (UnknownHostException e) {
+        }
+        return null;
+    }
+
+    /**
+     * getClientRealIp使用
+     * @param realIp
+     * @return
+     */
+    private static boolean checkRealIp(String realIp) {
+        return realIp == null || realIp.length() == 0 || realIp.equalsIgnoreCase("unKnown") ? false : true;
     }
 
     @After("webLog()")
