@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN" monitorInterval="300">
     <properties>
-
-        <!--<property name="log_path" value="jiudlogger:type"/>-->
-
         <!-- 可配置为tomcat/logs/kettle/的绝对路径 -->
         <!--<property name="LOG_HOME">logs/report/</property>-->
-        <property name="LOG_HOME">${log_path}</property>
+        <property name="LOG_HOME">${sys:LOG_PATH}</property>
         <!-- 文件输出格式 -->
         <property name="PATTERN">%d{yyyy.MM.dd HH:mm:ss}+%5level+%msg%n</property>
     </properties>
