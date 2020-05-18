@@ -76,6 +76,7 @@ public class SysLogAspect {
 
     @After("webLog()")
     public void doAfter() throws Throwable{
+        if (this.logEntity == null) return;
         String result = this.logEntity.getSplitEntity(jiudLoggerProperties.getSplit(), jiudLoggerProperties.getShowinfo(), jiudLoggerProperties.getSuffix(), jiudLoggerProperties.getPostfix());
         switch (this.logEntity.getLogType()) {
             case 1:
@@ -90,7 +91,7 @@ public class SysLogAspect {
                 break;
         }
         //释放该对象
-        //this.logEntity = null;
+        this.logEntity = null;
     }
 
     public String getAspectLogDescription(JoinPoint joinPoint){

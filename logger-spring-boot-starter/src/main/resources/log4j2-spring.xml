@@ -56,7 +56,7 @@
             <DefaultRolloverStrategy max="20" />
         </RollingRandomAccessFile>
 
-        <RollingRandomAccessFile name="FatalFile"
+            <RollingRandomAccessFile name="FatalFile"
                                  fileName="${LOG_HOME}/info/info.log"
                                  filePattern="${LOG_HOME}/$${date:yyyy-MM}/fatal-%d{yyyy-MM-dd}-%i.log">
             <Filters>
