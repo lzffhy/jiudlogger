@@ -1,35 +1,40 @@
 package com.lzffhy.hello;
+
 import com.jiud.JiudLoggerProperties;
-import com.jiud.annotation.ControllerLogs;
-import com.jiud.annotation.ServiceLogs;
 import com.jiud.annotation.SysLog;
+import com.jiud.util.Log;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class HelloController {
     Logger log = LoggerFactory.getLogger(HelloController.class);
+//    @Autowired
+//    public JiudLoggerProperties jiudLoggerProperties;
+
     @Autowired
-    public JiudLoggerProperties jiudLoggerProperties;
+    private HelloService helloService;
 
-
-    @GetMapping("hello")
-    @SysLog(description = "这是hello")
-    public String hello() throws Exception {
-
-        log.warn("warn");
-        log.error("error");
-        log.trace("trace");
-        log.info("info");
-        return jiudLoggerProperties.getType() + jiudLoggerProperties.getDescribe();
+    @GetMapping("hello/{param}")
+    //@SysLog(description = "这是hello")
+    public String hello(@PathVariable  String param) throws Exception {
+    sayHello();
+    helloService.say("this is a service");
+//        log.warn("warn");
+//        log.error("error");
+//        log.trace("trace");
+//        log.info("info");
+        return /*jiudLoggerProperties.getSplit() + */"======================" + param;
     }
 
 
     @SysLog(description = "say hello")
     public void sayHello() {
+        Log.info("=============================================");
         System.out.println("say hello");
     }
 

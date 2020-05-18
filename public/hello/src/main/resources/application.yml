@@ -3,5 +3,12 @@ server:
 
 jiudlogger:
   isopen: true
-  type: test/
-  describe: hello yang
+  split: "*********"
+  suffix: "++++"
+  postfix: "++++"
+  system: mhzx
+ # showinfo: requestTime,requestUrl,description,requestMethod,classMethod
+
+logging:
+  file:
+    path: logs/report
