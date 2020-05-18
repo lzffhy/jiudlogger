@@ -9,30 +9,63 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "jiudlogger")
 public class JiudLoggerProperties {
 
-    private String type;
+    private String suffix = "";
 
-    private String describe;
+    private String postfix = "++++";
+
+    private String split = "+";
+
+    private String system;
+
+    private String showinfo = null;
 
     public JiudLoggerProperties(){}
 
-    public JiudLoggerProperties(String type, String describe) {
-        this.type = type;
-        this.describe = describe;
+    public JiudLoggerProperties(String suffix, String postfix, String split, String system, String showinfo) {
+        this.suffix = suffix;
+        this.postfix = postfix;
+        this.split = split;
+        this.system = system;
+        this.showinfo = showinfo;
     }
 
-    public String getType() {
-        return type;
+    public void setShowinfo(String showinfo) {
+        this.showinfo = showinfo;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public String getShowinfo() {
+        return showinfo;
     }
 
-    public String getDescribe() {
-        return describe;
+    public void setSystem(String system) {
+        this.system = system;
     }
 
-    public void setDescribe(String describe) {
-        this.describe = describe;
+    public String getSystem() {
+        return system;
+    }
+
+    public String getSuffix() {
+        return suffix;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+    public String getPostfix() {
+        return postfix;
+    }
+
+    public void setPostfix(String postfix) {
+        this.postfix = postfix;
+    }
+
+    public String getSplit() {
+        return split;
+    }
+
+    public void setSplit(String split) {
+        this.split = split;
     }
 }

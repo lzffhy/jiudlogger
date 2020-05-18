@@ -1,7 +1,9 @@
 package com.jiud.aop;
 
 import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.serializer.SerializerFeature;
+import com.jiud.JiudLoggerProperties;
+import com.jiud.LogEntity;
+import com.jiud.eum.LogType;
 import com.jiud.annotation.SysLog;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -9,6 +11,7 @@ import org.aspectj.lang.annotation.*;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -17,6 +20,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.Method;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Aspect
@@ -24,10 +28,33 @@ import java.util.Date;
 public class SysLogAspect {
 
     protected Logger logger = LoggerFactory.getLogger(SysLogAspect.class);
-    private final static String LINE_SEPARATOR = System.lineSeparator();
+
+    private final static SimpleDateFormat FORMAT = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+
+    private LogEntity logEntity = null;
+
+    @Autowired
+    private JiudLoggerProperties jiudLoggerProperties;
 
     @Pointcut("@annotation(com.jiud.annotation.SysLog)")
     public void webLog(){}
+
+    @Before("webLog()")
+    public void doBefore(JoinPoint joinPoint) throws Throwable{
+        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+        HttpServletRequest request = attributes.getRequest();
+        String methodDesription = getAspectLogDescription(joinPoint);
+        this.logEntity = new LogEntity();
+        this.logEntity.setSystem(jiudLoggerProperties.getSystem());
+        this.logEntity.setRequestTime(FORMAT.format(new Date()));
+        this.logEntity.setRequestUrl(request.getRequestURL().toString());
+        this.logEntity.setDescription(methodDesription == null ? "" : methodDesription);
+        this.logEntity.setRequestMethod(request.getMethod());
+        this.logEntity.setClassMethod(joinPoint.getSignature().getDeclaringTypeName()+"."+joinPoint.getSignature().getName());
+        this.logEntity.setClientRealIp( getClientRealIp(request));
+        this.logEntity.setRequestArgs(JSON.toJSONString(joinPoint.getArgs()));
+        this.logEntity.setUserAgent(request.getHeader("User-Agent"));
+    }
 
     @Around("webLog()")
     public Object doAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable{
@@ -35,53 +62,42 @@ public class SysLogAspect {
         Object result = null;
         try {
             result = proceedingJoinPoint.proceed();
+            this.logEntity.setResponseResult(JSON.toJSONString(result));
+            this.logEntity.setLogType(LogType.INFO.getStatenum());
+            this.logEntity.setFaildMessage(" ");
         } catch (Exception e) {
-            logger.error("FAILED");
-            logger.error("FAILED Message：" + e.getMessage());
-        } finally {
-            try {
-                MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
-                ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-                HttpServletRequest request = attributes.getRequest();
-                logger.info(signature.getDeclaringTypeName() + "." + signature.getName());
-                logger.info(JSON.toJSONString(proceedingJoinPoint.getArgs()));
-                logger.info(JSON.toJSONString(result));
-                logger.info(String.valueOf(System.currentTimeMillis()));
-                logger.info(request.getRequestURL().toString());
-                logger.info(getClientRealIp(request));
-                logger.info(new Date().toString());
-                logger.info(request.getHeader("User-Agent"));
-            } catch (Exception ex) {
-                logger.error("LogAspect 操作失败：" + ex.getMessage());
-                ex.printStackTrace();
-            }
+            this.logEntity.setLogType(LogType.ERROR.getStatenum());
+            this.logEntity.setResponseResult(" ");
+            this.logEntity.setFaildMessage(e.getMessage());
         }
-        logger.info("Response Args  : "+ JSON.toJSONString(result) );
-        logger.info("Time-Consuming : ms " + (System.currentTimeMillis() - startTime));
+        this.logEntity.setElapsedTime("" + (System.currentTimeMillis() - startTime) + "ms");
         return result;
     }
 
-    @Before("webLog()")
-    public void doBefore(JoinPoint joinPoint) throws Throwable{
-        //logger.info("===========================================================");
-        ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
-        HttpServletRequest request = attributes.getRequest();
-        String methodDesription = getAspectLogDescription(joinPoint);
-        // 打印请求相关参数
-        logger.info("**************************** Start ****************************");
-        // 打印请求url
-        logger.info("URL            : " + request.getRequestURL().toString());
-        // 打印描述信息
-        logger.info("Description    : " + methodDesription);
-        // 打印 Http method
-        logger.info("Http Method    : " + request.getMethod());
-        // 打印调用Controller的全路径以及执行方法
-        logger.info("Class Method   : " + joinPoint.getSignature().getDeclaringTypeName()+" "+joinPoint.getSignature().getName());
-        // 打印请求的IP
-        //logger.info("IP             : " + request.getRemoteAddr());
-        logger.info("IP             : " + getClientRealIp(request));
-        // 打印请求入参
-        logger.info("Request Args   : " + JSON.toJSONString(joinPoint.getArgs()));
+    @After("webLog()")
+    public void doAfter() throws Throwable{
+        String result = this.logEntity.getSplitEntity(jiudLoggerProperties.getSplit(), jiudLoggerProperties.getShowinfo(), jiudLoggerProperties.getSuffix(), jiudLoggerProperties.getPostfix());
+        switch (this.logEntity.getLogType()) {
+            case 1:
+                logger.info(result); break;
+            case 2:
+                logger.warn(result); break;
+            case 3:
+                logger.debug(result); break;
+            case 4:
+                logger.error(result); break;
+            default:
+                break;
+        }
+        //释放该对象
+        //this.logEntity = null;
+    }
+
+    public String getAspectLogDescription(JoinPoint joinPoint){
+        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
+        Method method = methodSignature.getMethod();
+        SysLog webLog = method.getAnnotation(SysLog.class);
+        return webLog.description();
     }
 
     public static String getClientRealIp(HttpServletRequest request) {
@@ -131,17 +147,4 @@ public class SysLogAspect {
     private static boolean checkRealIp(String realIp) {
         return realIp == null || realIp.length() == 0 || realIp.equalsIgnoreCase("unKnown") ? false : true;
     }
-
-    @After("webLog()")
-    public void doAfter() throws Throwable{
-        logger.info("**************************** End ****************************" + LINE_SEPARATOR);
-    }
-
-    public String getAspectLogDescription(JoinPoint joinPoint){
-        MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
-        Method method = methodSignature.getMethod();
-        SysLog webLog = method.getAnnotation(SysLog.class);
-        return webLog.description();
-    }
-
 }
